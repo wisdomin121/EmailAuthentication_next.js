@@ -5,7 +5,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = memo(function Button(props: ButtonProps) {
-  const { children } = props;
+  const { children, onClick } = props;
 
-  return <button className="py-2 bg-gray-400 rounded-md">{children}</button>;
+  return (
+    <button className="py-2 bg-gray-400 rounded-md" onClick={onClick}>
+      {children}
+    </button>
+  );
 });

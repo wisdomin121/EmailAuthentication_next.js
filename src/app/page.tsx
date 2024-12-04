@@ -10,6 +10,19 @@ export default function Home() {
     setEmail(e.target.value);
   };
 
+  const sendAuthenticationEmail = async () => {
+    const response = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+
+    const result = await response.json();
+    console.log(result);
+
+    alert('완료');
+  };
+
   return (
     <div className="flex flex-col gap-2 px-6 py-5 rounded-md bg-white">
       <Input
@@ -18,7 +31,7 @@ export default function Home() {
         value={email}
         onChange={handleEmailInput}
       />
-      <Button>회원가입</Button>
+      <Button onClick={sendAuthenticationEmail}>회원가입</Button>
     </div>
   );
 }
